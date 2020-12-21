@@ -3,10 +3,14 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    @article = Article.new
+    @article = Article.find(params[:id])
   end
 
   def new
+    @article = Article.new
+  end
+
+  def create
     @article = Article.new(article_params)
     @article.user_id = current_user.id
     @article.save
